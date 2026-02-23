@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NourishDesk — Meal Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;0,900;1,300&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+
+<!-- ── SIDEBAR ── -->
+<aside class="sidebar">
+  <div class="sidebar-top">
+    <div class="brand">
+      <div class="brand-icon">🍽</div>
+      <div>
+        <div class="brand-name">NourishDesk</div>
+        <div class="brand-tag">Meal Management</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-group">
+        <span class="nav-group-label">Overview</span>
+        <a class="nav-link active"><i>📊</i> Dashboard</a>
+        <a class="nav-link"><i>🗓</i> Meal Planner</a>
+        <a class="nav-link"><i>🛒</i> Grocery List <span class="chip">12</span></a>
+      </div>
+      <div class="nav-group">
+        <span class="nav-group-label">Kitchen</span>
+        <a class="nav-link"><i>🍲</i> Recipes</a>
+        <a class="nav-link"><i>📦</i> Inventory</a>
+        <a class="nav-link"><i>👨‍🍳</i> Chefs</a>
+      </div>
+      <div class="nav-group">
+        <span class="nav-group-label">Members</span>
+        <a class="nav-link"><i>👥</i> Members <span class="chip">48</span></a>
+        <a class="nav-link"><i>🍽</i> Meal Logs</a>
+        <a class="nav-link"><i>💰</i> Billing</a>
+      </div>
+      <div class="nav-group">
+        <span class="nav-group-label">System</span>
+        <a class="nav-link"><i>📈</i> Reports</a>
+        <a class="nav-link"><i>⚙️</i> Settings</a>
+      </div>
+    </nav>
+  </div>
+
+  <div class="sidebar-user">
+    <div class="user-av">R</div>
+    <div class="user-info">
+      <div class="user-name">Rahim Manager</div>
+      <div class="user-role">Kitchen Head</div>
+    </div>
+    <div class="logout-btn">↩</div>
+  </div>
+</aside>
+
+<!-- ── MAIN ── -->
+<div class="main">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <h1 class="page-title">Dashboard</h1>
+      <p class="page-sub">Monday, 23 February 2026 · Spring Menu Active</p>
+    </div>
+    <div class="topbar-right">
+      <div class="search">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Search meals, members…" />
+      </div>
+      <button class="icon-btn notif">🔔<span class="dot"></span></button>
+      <button class="add-btn">+ Add Meal</button>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <!-- STAT CARDS -->
+    <div class="stats">
+      <div class="stat-card s1">
+        <div class="stat-emoji">🍽</div>
+        <div class="stat-val">1,248</div>
+        <div class="stat-label">Meals Today</div>
+        <div class="stat-delta up">▲ 8% vs yesterday</div>
+      </div>
+      <div class="stat-card s2">
+        <div class="stat-emoji">👥</div>
+        <div class="stat-val">48</div>
+        <div class="stat-label">Active Members</div>
+        <div class="stat-delta up">▲ 3 new this week</div>
+      </div>
+      <div class="stat-card s3">
+        <div class="stat-emoji">📦</div>
+        <div class="stat-val">৳24,580</div>
+        <div class="stat-label">Monthly Cost</div>
+        <div class="stat-delta dn">▼ ৳1,200 over budget</div>
+      </div>
+      <div class="stat-card s4">
+        <div class="stat-emoji">⭐</div>
+        <div class="stat-val">4.7</div>
+        <div class="stat-label">Avg Rating</div>
+        <div class="stat-delta up">▲ 0.2 this month</div>
+      </div>
+    </div>
+
+    <!-- MID ROW -->
+    <div class="mid-row">
+
+      <!-- TODAY'S MENU -->
+      <div class="card menu-card">
+        <div class="card-head">
+          <div class="card-title">Today's Menu</div>
+          <a class="card-link" href="#">Edit Menu →</a>
+        </div>
+        <div class="menu-grid">
+          <div class="menu-item">
+            <div class="meal-time">🌅 Breakfast</div>
+            <div class="meal-name">Paratha & Egg Bhurji</div>
+            <div class="meal-meta">7:00 AM · 480 kcal</div>
+            <div class="meal-tags">
+              <span class="tag">Veg</span>
+              <span class="tag">High Protein</span>
+            </div>
+            <div class="meal-bar"><div class="meal-fill" style="width:72%"></div></div>
+            <div class="meal-count">72 / 100 servings claimed</div>
+          </div>
+          <div class="menu-item">
+            <div class="meal-time">☀️ Lunch</div>
+            <div class="meal-name">Chicken Biryani + Raita</div>
+            <div class="meal-meta">1:00 PM · 820 kcal</div>
+            <div class="meal-tags">
+              <span class="tag tag-amber">Non-Veg</span>
+              <span class="tag">Spicy</span>
+            </div>
+            <div class="meal-bar"><div class="meal-fill" style="width:91%"></div></div>
+            <div class="meal-count">91 / 100 servings claimed</div>
+          </div>
+          <div class="menu-item">
+            <div class="meal-time">🌙 Dinner</div>
+            <div class="meal-name">Dal Makhani + Roti</div>
+            <div class="meal-meta">8:00 PM · 610 kcal</div>
+            <div class="meal-tags">
+              <span class="tag">Veg</span>
+              <span class="tag tag-blue">Low Fat</span>
+            </div>
+            <div class="meal-bar"><div class="meal-fill" style="width:40%"></div></div>
+            <div class="meal-count">40 / 100 servings claimed</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- QUICK PANEL -->
+      <div class="quick-col">
+
+        <!-- NOTICE -->
+        <div class="notice-card">
+          <div class="notice-label">📌 Notice</div>
+          <div class="notice-text">Friday's dinner will be <strong>Hilsa Fish Curry</strong>. Please pre-register by Thursday noon.</div>
+          <div class="notice-date">Posted · 23 Feb 2026</div>
+        </div>
+
+        <!-- WEEKLY COST -->
+        <div class="card cost-card">
+          <div class="card-head">
+            <div class="card-title">Weekly Cost Trend</div>
+          </div>
+          <div class="cost-bars">
+            <div class="cost-day"><div class="cost-bar-wrap"><div class="cost-bar" style="height:55%"></div></div><div class="cost-lbl">Mon</div></div>
+            <div class="cost-day"><div class="cost-bar-wrap"><div class="cost-bar" style="height:70%"></div></div><div class="cost-lbl">Tue</div></div>
+            <div class="cost-day"><div class="cost-bar-wrap"><div class="cost-bar" style="height:45%"></div></div><div class="cost-lbl">Wed</div></div>
+            <div class="cost-day"><div class="cost-bar-wrap"><div class="cost-bar cb-today" style="height:88%"></div></div><div class="cost-lbl today-lbl">Today</div></div>
+            <div class="cost-day"><div class="cost-bar-wrap"><div class="cost-bar cb-dim" style="height:30%"></div></div><div class="cost-lbl">Fri</div></div>
+            <div class="cost-day"><div class="cost-bar-wrap"><div class="cost-bar cb-dim" style="height:30%"></div></div><div class="cost-lbl">Sat</div></div>
+            <div class="cost-day"><div class="cost-bar-wrap"><div class="cost-bar cb-dim" style="height:30%"></div></div><div class="cost-lbl">Sun</div></div>
+          </div>
+          <div class="cost-note">Avg ৳3,512/day · Budget ৳3,200</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM ROW -->
+    <div class="bottom-row">
+
+      <!-- MEMBER TABLE -->
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Member Meal Log</div>
+          <a class="card-link" href="#">View All →</a>
+        </div>
+        <table class="meal-table">
+          <thead>
+            <tr>
+              <th>Member</th>
+              <th>Today's Meals</th>
+              <th>This Month</th>
+              <th>Due</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="member-cell"><div class="mav" style="background:#ffe0b0">T</div><div><div class="m-name">Tanvir Ahmed</div><div class="m-id">MEM-001</div></div></div></td>
+              <td><div class="meal-dots"><span class="mdot mdot-g" title="Breakfast">B</span><span class="mdot mdot-g" title="Lunch">L</span><span class="mdot mdot-g" title="Dinner">D</span></div></td>
+              <td><span class="mono">42 meals</span></td>
+              <td><span class="mono dn">৳0</span></td>
+              <td><span class="badge badge-ok">Paid</span></td>
+            </tr>
+            <tr>
+              <td><div class="member-cell"><div class="mav" style="background:#b0e0ff">S</div><div><div class="m-name">Sadia Akter</div><div class="m-id">MEM-002</div></div></div></td>
+              <td><div class="meal-dots"><span class="mdot mdot-g">B</span><span class="mdot mdot-g">L</span><span class="mdot mdot-n">D</span></div></td>
+              <td><span class="mono">38 meals</span></td>
+              <td><span class="mono dn">৳1,200</span></td>
+              <td><span class="badge badge-warn">Pending</span></td>
+            </tr>
+            <tr>
+              <td><div class="member-cell"><div class="mav" style="background:#d0f0c0">R</div><div><div class="m-name">Rahim Uddin</div><div class="m-id">MEM-003</div></div></div></td>
+              <td><div class="meal-dots"><span class="mdot mdot-g">B</span><span class="mdot mdot-n">L</span><span class="mdot mdot-n">D</span></div></td>
+              <td><span class="mono">29 meals</span></td>
+              <td><span class="mono">৳0</span></td>
+              <td><span class="badge badge-ok">Paid</span></td>
+            </tr>
+            <tr>
+              <td><div class="member-cell"><div class="mav" style="background:#f0c0e0">N</div><div><div class="m-name">Nusrat Jahan</div><div class="m-id">MEM-004</div></div></div></td>
+              <td><div class="meal-dots"><span class="mdot mdot-g">B</span><span class="mdot mdot-g">L</span><span class="mdot mdot-g">D</span></div></td>
+              <td><span class="mono">55 meals</span></td>
+              <td><span class="mono dn">৳2,400</span></td>
+              <td><span class="badge badge-red">Overdue</span></td>
+            </tr>
+            <tr>
+              <td><div class="member-cell"><div class="mav" style="background:#e0d0ff">K</div><div><div class="m-name">Karim Hossain</div><div class="m-id">MEM-005</div></div></div></td>
+              <td><div class="meal-dots"><span class="mdot mdot-n">B</span><span class="mdot mdot-g">L</span><span class="mdot mdot-n">D</span></div></td>
+              <td><span class="mono">31 meals</span></td>
+              <td><span class="mono">৳0</span></td>
+              <td><span class="badge badge-ok">Paid</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- INVENTORY -->
+      <div class="card inv-card">
+        <div class="card-head">
+          <div class="card-title">Inventory Status</div>
+          <a class="card-link" href="#">Manage →</a>
+        </div>
+        <div class="inv-list">
+          <div class="inv-item">
+            <span class="inv-icon">🍚</span>
+            <div class="inv-info">
+              <div class="inv-name">Rice</div>
+              <div class="inv-bar-wrap"><div class="inv-bar" style="width:80%"></div></div>
+            </div>
+            <div class="inv-qty">40 kg</div>
+          </div>
+          <div class="inv-item">
+            <span class="inv-icon">🛢</span>
+            <div class="inv-info">
+              <div class="inv-name">Cooking Oil</div>
+              <div class="inv-bar-wrap"><div class="inv-bar inv-warn" style="width:25%"></div></div>
+            </div>
+            <div class="inv-qty inv-low">5 L ⚠</div>
+          </div>
+          <div class="inv-item">
+            <span class="inv-icon">🧅</span>
+            <div class="inv-info">
+              <div class="inv-name">Onion</div>
+              <div class="inv-bar-wrap"><div class="inv-bar" style="width:60%"></div></div>
+            </div>
+            <div class="inv-qty">12 kg</div>
+          </div>
+          <div class="inv-item">
+            <span class="inv-icon">🍗</span>
+            <div class="inv-info">
+              <div class="inv-name">Chicken</div>
+              <div class="inv-bar-wrap"><div class="inv-bar inv-warn" style="width:15%"></div></div>
+            </div>
+            <div class="inv-qty inv-low">3 kg ⚠</div>
+          </div>
+          <div class="inv-item">
+            <span class="inv-icon">🥚</span>
+            <div class="inv-info">
+              <div class="inv-name">Eggs</div>
+              <div class="inv-bar-wrap"><div class="inv-bar" style="width:70%"></div></div>
+            </div>
+            <div class="inv-qty">70 pcs</div>
+          </div>
+          <div class="inv-item">
+            <span class="inv-icon">🧂</span>
+            <div class="inv-info">
+              <div class="inv-name">Spices Mix</div>
+              <div class="inv-bar-wrap"><div class="inv-bar" style="width:90%"></div></div>
+            </div>
+            <div class="inv-qty">2.5 kg</div>
+          </div>
+          <div class="inv-item">
+            <span class="inv-icon">🫙</span>
+            <div class="inv-info">
+              <div class="inv-name">Lentils (Dal)</div>
+              <div class="inv-bar-wrap"><div class="inv-bar" style="width:50%"></div></div>
+            </div>
+            <div class="inv-qty">10 kg</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<script>
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
