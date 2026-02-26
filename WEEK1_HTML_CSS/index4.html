@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bibliotheca — Library Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style4.css"/>
+</head>
+<body>
+
+<!-- ── SIDEBAR ── -->
+<aside class="sidebar">
+  <div class="sidebar-inner">
+
+    <div class="brand">
+      <div class="brand-emblem">📚</div>
+      <div class="brand-words">
+        <div class="brand-name">Bibliotheca</div>
+        <div class="brand-sub">Library Management</div>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Main</div>
+      <a class="nav-item active"><span>🏠</span> Dashboard</a>
+      <a class="nav-item"><span>📖</span> Books Catalog <b class="pill">4,821</b></a>
+      <a class="nav-item"><span>🔍</span> Search & Filter</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Circulation</div>
+      <a class="nav-item"><span>↗️</span> Issue Book</a>
+      <a class="nav-item"><span>↩️</span> Return Book</a>
+      <a class="nav-item"><span>🔁</span> Renewals <b class="pill warn">9</b></a>
+      <a class="nav-item"><span>⚠️</span> Overdue <b class="pill danger">14</b></a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Members</div>
+      <a class="nav-item"><span>👤</span> Members</a>
+      <a class="nav-item"><span>🆕</span> New Registration</a>
+      <a class="nav-item"><span>💰</span> Fine Collection</a>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Management</div>
+      <a class="nav-item"><span>📥</span> Acquisitions</a>
+      <a class="nav-item"><span>📊</span> Reports</a>
+      <a class="nav-item"><span>⚙️</span> Settings</a>
+    </div>
+  </div>
+
+  <div class="sidebar-foot">
+    <div class="librarian-card">
+      <div class="lib-av">F</div>
+      <div class="lib-info">
+        <div class="lib-name">Farida Haque</div>
+        <div class="lib-role">Head Librarian</div>
+      </div>
+      <span class="lib-logout">⏻</span>
+    </div>
+  </div>
+</aside>
+
+<!-- ── MAIN ── -->
+<div class="main">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <h1 class="page-heading">Dashboard</h1>
+      <p class="page-meta">Thursday, 26 Feb 2026 &nbsp;·&nbsp; Spring Semester Active</p>
+    </div>
+    <div class="topbar-right">
+      <div class="searchbar">
+        <span>🔍</span>
+        <input type="text" placeholder="Search books, members, ISBN…"/>
+      </div>
+      <button class="tb-btn"><span>🔔</span><span class="notif-dot"></span></button>
+      <button class="primary-btn">+ Add Book</button>
+    </div>
+  </header>
+
+  <!-- PAGE CONTENT -->
+  <div class="page-content">
+
+    <!-- STAT CARDS -->
+    <div class="stat-row">
+      <div class="scard sc-dark">
+        <div class="scard-icon">📚</div>
+        <div class="scard-num">4,821</div>
+        <div class="scard-lbl">Total Books</div>
+        <div class="scard-change pos">▲ 38 added this month</div>
+      </div>
+      <div class="scard sc-rust">
+        <div class="scard-icon">↗️</div>
+        <div class="scard-num">312</div>
+        <div class="scard-lbl">Issued Books</div>
+        <div class="scard-change pos">▲ 24 today</div>
+      </div>
+      <div class="scard sc-slate">
+        <div class="scard-icon">👥</div>
+        <div class="scard-num">1,094</div>
+        <div class="scard-lbl">Active Members</div>
+        <div class="scard-change pos">▲ 12 new</div>
+      </div>
+      <div class="scard sc-wine">
+        <div class="scard-icon">⚠️</div>
+        <div class="scard-num">14</div>
+        <div class="scard-lbl">Overdue Books</div>
+        <div class="scard-change neg">▲ 3 since yesterday</div>
+      </div>
+    </div>
+
+    <!-- ROW 2 -->
+    <div class="row2">
+
+      <!-- RECENT TRANSACTIONS -->
+      <div class="panel">
+        <div class="panel-head">
+          <div class="panel-title">Recent Transactions</div>
+          <a class="panel-link">View All →</a>
+        </div>
+        <table class="lib-table">
+          <thead>
+            <tr>
+              <th>Book</th>
+              <th>Member</th>
+              <th>Issue Date</th>
+              <th>Due Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="book-cell">
+                  <div class="book-spine sp1"></div>
+                  <div>
+                    <div class="book-title">Clean Code</div>
+                    <div class="book-author">Robert C. Martin</div>
+                  </div>
+                </div>
+              </td>
+              <td><div class="mem-name">Tanvir Ahmed</div><div class="mem-id">MEM-0041</div></td>
+              <td><span class="mono">18 Feb 2026</span></td>
+              <td><span class="mono">04 Mar 2026</span></td>
+              <td><span class="status st-issued">Issued</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="book-cell">
+                  <div class="book-spine sp2"></div>
+                  <div>
+                    <div class="book-title">The Alchemist</div>
+                    <div class="book-author">Paulo Coelho</div>
+                  </div>
+                </div>
+              </td>
+              <td><div class="mem-name">Sadia Khanam</div><div class="mem-id">MEM-0088</div></td>
+              <td><span class="mono">10 Feb 2026</span></td>
+              <td><span class="mono">24 Feb 2026</span></td>
+              <td><span class="status st-overdue">Overdue</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="book-cell">
+                  <div class="book-spine sp3"></div>
+                  <div>
+                    <div class="book-title">Sapiens</div>
+                    <div class="book-author">Yuval Noah Harari</div>
+                  </div>
+                </div>
+              </td>
+              <td><div class="mem-name">Rahim Uddin</div><div class="mem-id">MEM-0112</div></td>
+              <td><span class="mono">25 Feb 2026</span></td>
+              <td><span class="mono">11 Mar 2026</span></td>
+              <td><span class="status st-issued">Issued</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="book-cell">
+                  <div class="book-spine sp4"></div>
+                  <div>
+                    <div class="book-title">Atomic Habits</div>
+                    <div class="book-author">James Clear</div>
+                  </div>
+                </div>
+              </td>
+              <td><div class="mem-name">Nusrat Jahan</div><div class="mem-id">MEM-0057</div></td>
+              <td><span class="mono">26 Feb 2026</span></td>
+              <td><span class="mono">12 Mar 2026</span></td>
+              <td><span class="status st-issued">Issued</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="book-cell">
+                  <div class="book-spine sp5"></div>
+                  <div>
+                    <div class="book-title">Deep Work</div>
+                    <div class="book-author">Cal Newport</div>
+                  </div>
+                </div>
+              </td>
+              <td><div class="mem-name">Karim Hassan</div><div class="mem-id">MEM-0201</div></td>
+              <td><span class="mono">05 Feb 2026</span></td>
+              <td><span class="mono">19 Feb 2026</span></td>
+              <td><span class="status st-returned">Returned</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="book-cell">
+                  <div class="book-spine sp6"></div>
+                  <div>
+                    <div class="book-title">Design Patterns</div>
+                    <div class="book-author">Gang of Four</div>
+                  </div>
+                </div>
+              </td>
+              <td><div class="mem-name">Mitu Begum</div><div class="mem-id">MEM-0073</div></td>
+              <td><span class="mono">01 Feb 2026</span></td>
+              <td><span class="mono">15 Feb 2026</span></td>
+              <td><span class="status st-overdue">Overdue</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="right-col">
+
+        <!-- CATEGORY CHART -->
+        <div class="panel cat-panel">
+          <div class="panel-head">
+            <div class="panel-title">Books by Category</div>
+          </div>
+          <div class="cat-list">
+            <div class="cat-item">
+              <span class="cat-dot" style="background:#b5451b"></span>
+              <span class="cat-name">Computer Science</span>
+              <div class="cat-bar-wrap"><div class="cat-bar" style="width:78%; background:#b5451b"></div></div>
+              <span class="cat-count">1,120</span>
+            </div>
+            <div class="cat-item">
+              <span class="cat-dot" style="background:#2d4a6e"></span>
+              <span class="cat-name">Literature</span>
+              <div class="cat-bar-wrap"><div class="cat-bar" style="width:62%; background:#2d4a6e"></div></div>
+              <span class="cat-count">892</span>
+            </div>
+            <div class="cat-item">
+              <span class="cat-dot" style="background:#5c3d1e"></span>
+              <span class="cat-name">Science</span>
+              <div class="cat-bar-wrap"><div class="cat-bar" style="width:50%; background:#5c3d1e"></div></div>
+              <span class="cat-count">720</span>
+            </div>
+            <div class="cat-item">
+              <span class="cat-dot" style="background:#7a3e48"></span>
+              <span class="cat-name">History</span>
+              <div class="cat-bar-wrap"><div class="cat-bar" style="width:40%; background:#7a3e48"></div></div>
+              <span class="cat-count">575</span>
+            </div>
+            <div class="cat-item">
+              <span class="cat-dot" style="background:#3d6b4f"></span>
+              <span class="cat-name">Business</span>
+              <div class="cat-bar-wrap"><div class="cat-bar" style="width:32%; background:#3d6b4f"></div></div>
+              <span class="cat-count">462</span>
+            </div>
+            <div class="cat-item">
+              <span class="cat-dot" style="background:#5e4a7e"></span>
+              <span class="cat-name">Others</span>
+              <div class="cat-bar-wrap"><div class="cat-bar" style="width:24%; background:#5e4a7e"></div></div>
+              <span class="cat-count">352</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- OVERDUE ALERT -->
+        <div class="overdue-alert">
+          <div class="ov-header">
+            <span class="ov-icon">⚠️</span>
+            <span class="ov-title">Overdue Alerts</span>
+            <a class="panel-link" style="margin-left:auto">All →</a>
+          </div>
+          <div class="ov-list">
+            <div class="ov-item">
+              <div class="ov-book">The Alchemist</div>
+              <div class="ov-mem">Sadia Khanam · MEM-0088</div>
+              <div class="ov-days">2 days late · ৳20 fine</div>
+            </div>
+            <div class="ov-item">
+              <div class="ov-book">Design Patterns</div>
+              <div class="ov-mem">Mitu Begum · MEM-0073</div>
+              <div class="ov-days">11 days late · ৳110 fine</div>
+            </div>
+            <div class="ov-item">
+              <div class="ov-book">The Pragmatic Programmer</div>
+              <div class="ov-mem">Jasim Uddin · MEM-0034</div>
+              <div class="ov-days">7 days late · ৳70 fine</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ROW 3 -->
+    <div class="row3">
+
+      <!-- POPULAR BOOKS -->
+      <div class="panel">
+        <div class="panel-head">
+          <div class="panel-title">Most Popular Books</div>
+          <a class="panel-link">Catalog →</a>
+        </div>
+        <div class="popular-grid">
+          <div class="pop-book">
+            <div class="pop-spine" style="background: linear-gradient(160deg,#b5451b,#7a2e0a)">CS</div>
+            <div class="pop-info">
+              <div class="pop-title">Clean Code</div>
+              <div class="pop-auth">Robert C. Martin</div>
+              <div class="pop-meta"><span class="pop-issued">Issued 38×</span></div>
+            </div>
+          </div>
+          <div class="pop-book">
+            <div class="pop-spine" style="background: linear-gradient(160deg,#2d4a6e,#1a2d44)">LIT</div>
+            <div class="pop-info">
+              <div class="pop-title">Sapiens</div>
+              <div class="pop-auth">Yuval Noah Harari</div>
+              <div class="pop-meta"><span class="pop-issued">Issued 31×</span></div>
+            </div>
+          </div>
+          <div class="pop-book">
+            <div class="pop-spine" style="background: linear-gradient(160deg,#3d6b4f,#254033)">BUS</div>
+            <div class="pop-info">
+              <div class="pop-title">Atomic Habits</div>
+              <div class="pop-auth">James Clear</div>
+              <div class="pop-meta"><span class="pop-issued">Issued 28×</span></div>
+            </div>
+          </div>
+          <div class="pop-book">
+            <div class="pop-spine" style="background: linear-gradient(160deg,#5c3d1e,#3a2410)">SCI</div>
+            <div class="pop-info">
+              <div class="pop-title">A Brief History of Time</div>
+              <div class="pop-auth">Stephen Hawking</div>
+              <div class="pop-meta"><span class="pop-issued">Issued 24×</span></div>
+            </div>
+          </div>
+          <div class="pop-book">
+            <div class="pop-spine" style="background: linear-gradient(160deg,#7a3e48,#4e2630)">LIT</div>
+            <div class="pop-info">
+              <div class="pop-title">The Alchemist</div>
+              <div class="pop-auth">Paulo Coelho</div>
+              <div class="pop-meta"><span class="pop-issued">Issued 22×</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FINE SUMMARY -->
+      <div class="panel fine-panel">
+        <div class="panel-head">
+          <div class="panel-title">Fine Summary</div>
+          <a class="panel-link">Collect →</a>
+        </div>
+        <div class="fine-stats">
+          <div class="fine-block">
+            <div class="fine-val">৳2,840</div>
+            <div class="fine-lbl">Total Outstanding</div>
+          </div>
+          <div class="fine-block">
+            <div class="fine-val fine-green">৳14,200</div>
+            <div class="fine-lbl">Collected This Month</div>
+          </div>
+        </div>
+        <div class="fine-members">
+          <div class="fine-row">
+            <div class="fine-mem">Mitu Begum</div>
+            <div class="fine-amt red">৳110</div>
+          </div>
+          <div class="fine-row">
+            <div class="fine-mem">Sadia Khanam</div>
+            <div class="fine-amt red">৳20</div>
+          </div>
+          <div class="fine-row">
+            <div class="fine-mem">Jasim Uddin</div>
+            <div class="fine-amt red">৳70</div>
+          </div>
+          <div class="fine-row">
+            <div class="fine-mem">Asha Moni</div>
+            <div class="fine-amt red">৳50</div>
+          </div>
+          <div class="fine-row">
+            <div class="fine-mem">Rubel Islam</div>
+            <div class="fine-amt red">৳140</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.nav-item').forEach(el => {
+    el.addEventListener('click', () => {
+      document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+      el.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
