@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Routine Maker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Nunito:wght@400;500;600;700;800&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:       #f7f3ee;
+      --card:     #ffffff;
+      --ink:      #1a1612;
+      --muted:    #9a8f85;
+      --border:   #e8e0d5;
+      --accent:   #c0392b;
+      --accent2:  #2471a3;
+      --accent3:  #1e8449;
+      --yellow:   #f39c12;
+      --tag-bg:   #fdf6e3;
+      --r: 14px;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      padding: 32px 20px 60px;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+      animation: fadeDown .5s ease both;
+    }
+
+    .header-title {
+      font-family: 'Gilda Display', serif;
+      font-size: 42px;
+      color: var(--ink);
+      letter-spacing: .5px;
+    }
+
+    .header-title span { color: var(--accent); }
+
+    .header-sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .wrapper {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ── ADD FORM ── */
+    .form-card {
+      background: var(--card);
+      border-radius: var(--r);
+      border: 1.5px solid var(--border);
+      padding: 24px;
+      position: sticky;
+      top: 20px;
+      animation: fadeUp .5s ease .1s both;
+      box-shadow: 0 4px 20px rgba(26,22,18,.06);
+    }
+
+    .form-title {
+      font-family: 'Gilda Display', serif;
+      font-size: 20px;
+      margin-bottom: 18px;
+      color: var(--ink);
+    }
+
+    .form-group { margin-bottom: 14px; }
+
+    label {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="time"],
+    select {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 9px;
+      background: var(--bg);
+      font-family: 'Nunito', sans-serif;
+      font-size: 13.5px;
+      color: var(--ink);
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    input:focus, select:focus { border-color: var(--accent); background: #fff; }
+
+    .color-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .color-opt {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2.5px solid transparent;
+      transition: transform .15s, border-color .15s;
+    }
+
+    .color-opt:hover { transform: scale(1.15); }
+    .color-opt.selected { border-color: var(--ink); transform: scale(1.1); }
+
+    .day-checks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .day-check {
+      display: none;
+    }
+
+    .day-label {
+      padding: 5px 10px;
+      border-radius: 7px;
+      border: 1.5px solid var(--border);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .15s;
+      color: var(--muted);
+      background: var(--bg);
+      user-select: none;
+    }
+
+    .day-check:checked + .day-label {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+
+    .add-btn {
+      width: 100%;
+      padding: 11px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      margin-top: 6px;
+    }
+
+    .add-btn:hover { background: #a93226; transform: translateY(-1px); }
+
+    /* ── ROUTINE TABLE ── */
+    .routine-area {
+      animation: fadeUp .5s ease .2s both;
+    }
+
+    .routine-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .routine-heading {
+      font-family: 'Gilda Display', serif;
+      font-size: 22px;
+    }
+
+    .clear-btn {
+      font-size: 12px;
+      color: var(--muted);
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 5px 12px;
+      cursor: pointer;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      transition: all .15s;
+    }
+
+    .clear-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Day filter tabs */
+    .day-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .day-tab {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1.5px solid var(--border);
+      background: var(--card);
+      color: var(--muted);
+      transition: all .15s;
+    }
+
+    .day-tab:hover { border-color: var(--ink); color: var(--ink); }
+    .day-tab.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+    /* Table */
+    .table-wrap {
+      background: var(--card);
+      border-radius: var(--r);
+      border: 1.5px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(26,22,18,.06);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead th {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--muted);
+      padding: 12px 16px;
+      text-align: left;
+      background: var(--tag-bg);
+      border-bottom: 1.5px solid var(--border);
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background .15s;
+      animation: slideIn .3s ease both;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--tag-bg); }
+
+    tbody td {
+      padding: 11px 16px;
+      font-size: 13.5px;
+      vertical-align: middle;
+    }
+
+    .time-cell {
+      font-family: 'Courier Prime', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .subject-cell { font-weight: 700; }
+
+    .color-dot {
+      display: inline-block;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      margin-right: 7px;
+      vertical-align: middle;
+    }
+
+    .day-pills { display: flex; gap: 4px; flex-wrap: wrap; }
+
+    .day-pill {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 5px;
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .del-btn {
+      background: none;
+      border: 1.5px solid var(--border);
+      border-radius: 7px;
+      width: 28px; height: 28px;
+      cursor: pointer;
+      font-size: 14px;
+      display: grid;
+      place-items: center;
+      transition: all .15s;
+      color: var(--muted);
+    }
+
+    .del-btn:hover { background: #fdecea; border-color: var(--accent); color: var(--accent); }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+    }
+
+    .empty-icon { font-size: 48px; margin-bottom: 12px; }
+    .empty-text { font-size: 14px; }
+
+    /* ── SUMMARY ROW ── */
+    .summary {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .summary-pill {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--card);
+      border: 1.5px solid var(--border);
+      color: var(--muted);
+    }
+
+    .summary-pill span { color: var(--ink); font-size: 14px; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-10px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @media (max-width: 720px) {
+      .wrapper { grid-template-columns: 1fr; }
+      .form-card { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-title">My <span>Routine</span> Maker</div>
+  <div class="header-sub">Plan your week, one slot at a time ✏️</div>
+</div>
+
+<div class="wrapper">
+
+  <!-- FORM -->
+  <div class="form-card">
+    <div class="form-title">➕ Add a Slot</div>
+
+    <div class="form-group">
+      <label>Subject / Task</label>
+      <input type="text" id="subject" placeholder="e.g. Math, Gym, Break…"/>
+    </div>
+
+    <div class="form-group">
+      <label>Teacher / Note (optional)</label>
+      <input type="text" id="teacher" placeholder="e.g. Mr. Karim, Self-study"/>
+    </div>
+
+    <div class="form-group">
+      <label>Start Time</label>
+      <input type="time" id="start" value="08:00"/>
+    </div>
+
+    <div class="form-group">
+      <label>End Time</label>
+      <input type="time" id="end" value="09:00"/>
+    </div>
+
+    <div class="form-group">
+      <label>Room / Location</label>
+      <input type="text" id="room" placeholder="e.g. Room 201, Online"/>
+    </div>
+
+    <div class="form-group">
+      <label>Color</label>
+      <div class="color-row" id="colorRow">
+        <div class="color-opt selected" data-color="#c0392b" style="background:#c0392b"></div>
+        <div class="color-opt" data-color="#2471a3" style="background:#2471a3"></div>
+        <div class="color-opt" data-color="#1e8449" style="background:#1e8449"></div>
+        <div class="color-opt" data-color="#f39c12" style="background:#f39c12"></div>
+        <div class="color-opt" data-color="#8e44ad" style="background:#8e44ad"></div>
+        <div class="color-opt" data-color="#16a085" style="background:#16a085"></div>
+        <div class="color-opt" data-color="#d35400" style="background:#d35400"></div>
+        <div class="color-opt" data-color="#2c3e50" style="background:#2c3e50"></div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Days</label>
+      <div class="day-checks">
+        <input class="day-check" type="checkbox" id="dSun" value="Sun"><label class="day-label" for="dSun">Sun</label>
+        <input class="day-check" type="checkbox" id="dMon" value="Mon" checked><label class="day-label" for="dMon">Mon</label>
+        <input class="day-check" type="checkbox" id="dTue" value="Tue"><label class="day-label" for="dTue">Tue</label>
+        <input class="day-check" type="checkbox" id="dWed" value="Wed"><label class="day-label" for="dWed">Wed</label>
+        <input class="day-check" type="checkbox" id="dThu" value="Thu"><label class="day-label" for="dThu">Thu</label>
+        <input class="day-check" type="checkbox" id="dFri" value="Fri"><label class="day-label" for="dFri">Fri</label>
+        <input class="day-check" type="checkbox" id="dSat" value="Sat"><label class="day-label" for="dSat">Sat</label>
+      </div>
+    </div>
+
+    <button class="add-btn" onclick="addSlot()">Add to Routine</button>
+  </div>
+
+  <!-- ROUTINE TABLE -->
+  <div class="routine-area">
+    <div class="routine-top">
+      <div class="routine-heading">📅 Your Routine</div>
+      <button class="clear-btn" onclick="clearAll()">Clear All</button>
+    </div>
+
+    <div class="day-tabs">
+      <div class="day-tab active" data-day="All" onclick="filterDay(this)">All Days</div>
+      <div class="day-tab" data-day="Sun" onclick="filterDay(this)">Sun</div>
+      <div class="day-tab" data-day="Mon" onclick="filterDay(this)">Mon</div>
+      <div class="day-tab" data-day="Tue" onclick="filterDay(this)">Tue</div>
+      <div class="day-tab" data-day="Wed" onclick="filterDay(this)">Wed</div>
+      <div class="day-tab" data-day="Thu" onclick="filterDay(this)">Thu</div>
+      <div class="day-tab" data-day="Fri" onclick="filterDay(this)">Fri</div>
+      <div class="day-tab" data-day="Sat" onclick="filterDay(this)">Sat</div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Subject / Task</th>
+            <th>Teacher / Note</th>
+            <th>Room</th>
+            <th>Days</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="routineBody">
+          <!-- rows injected here -->
+        </tbody>
+      </table>
+      <div class="empty-state" id="emptyState">
+        <div class="empty-icon">🗒️</div>
+        <div class="empty-text">No slots yet. Add your first class or task!</div>
+      </div>
+    </div>
+
+    <div class="summary" id="summary"></div>
+  </div>
+</div>
+
+<script>
+  const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  let slots = JSON.parse(localStorage.getItem('routine_slots') || '[]');
+  let selectedColor = '#c0392b';
+  let activeFilter = 'All';
+
+  // Color picker
+  document.querySelectorAll('.color-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      document.querySelectorAll('.color-opt').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      selectedColor = opt.dataset.color;
+    });
+  });
+
+  function getCheckedDays() {
+    return DAYS.filter(d => document.getElementById('d' + d).checked);
+  }
+
+  function fmt12(time24) {
+    if (!time24) return '';
+    const [h, m] = time24.split(':').map(Number);
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    const h12 = h % 12 || 12;
+    return `${h12}:${String(m).padStart(2,'0')} ${ampm}`;
+  }
+
+  function addSlot() {
+    const subject = document.getElementById('subject').value.trim();
+    const teacher = document.getElementById('teacher').value.trim();
+    const start   = document.getElementById('start').value;
+    const end     = document.getElementById('end').value;
+    const room    = document.getElementById('room').value.trim();
+    const days    = getCheckedDays();
+
+    if (!subject) { alert('Please enter a subject or task!'); return; }
+    if (!start || !end) { alert('Please set start and end time!'); return; }
+    if (days.length === 0) { alert('Please select at least one day!'); return; }
+
+    const slot = { id: Date.now(), subject, teacher, start, end, room, days, color: selectedColor };
+    slots.push(slot);
+    slots.sort((a, b) => a.start.localeCompare(b.start));
+    save();
+    render();
+
+    // Reset
+    document.getElementById('subject').value = '';
+    document.getElementById('teacher').value = '';
+    document.getElementById('room').value = '';
+  }
+
+  function deleteSlot(id) {
+    slots = slots.filter(s => s.id !== id);
+    save();
+    render();
+  }
+
+  function clearAll() {
+    if (slots.length === 0) return;
+    if (confirm('Clear all slots?')) { slots = []; save(); render(); }
+  }
+
+  function filterDay(el) {
+    document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    activeFilter = el.dataset.day;
+    render();
+  }
+
+  function save() {
+    localStorage.setItem('routine_slots', JSON.stringify(slots));
+  }
+
+  function render() {
+    const body  = document.getElementById('routineBody');
+    const empty = document.getElementById('emptyState');
+    const sumEl = document.getElementById('summary');
+    body.innerHTML = '';
+
+    const filtered = activeFilter === 'All'
+      ? slots
+      : slots.filter(s => s.days.includes(activeFilter));
+
+    if (filtered.length === 0) {
+      empty.style.display = 'block';
+      sumEl.innerHTML = '';
+      return;
+    }
+
+    empty.style.display = 'none';
+
+    filtered.forEach((s, i) => {
+      const tr = document.createElement('tr');
+      tr.style.animationDelay = (i * 0.04) + 's';
+      tr.innerHTML = `
+        <td class="time-cell">${fmt12(s.start)} – ${fmt12(s.end)}</td>
+        <td class="subject-cell">
+          <span class="color-dot" style="background:${s.color}"></span>${s.subject}
+        </td>
+        <td style="color:var(--muted);font-size:12.5px">${s.teacher || '—'}</td>
+        <td style="font-size:12.5px">${s.room || '—'}</td>
+        <td>
+          <div class="day-pills">
+            ${s.days.map(d => `<span class="day-pill" style="border-color:${s.color}30;color:${s.color}">${d}</span>`).join('')}
+          </div>
+        </td>
+        <td>
+          <button class="del-btn" onclick="deleteSlot(${s.id})" title="Delete">✕</button>
+        </td>
+      `;
+      body.appendChild(tr);
+    });
+
+    // Summary
+    const totalSlots = slots.length;
+    const totalDays  = [...new Set(slots.flatMap(s => s.days))].length;
+    sumEl.innerHTML = `
+      <div class="summary-pill"><span>${totalSlots}</span> total slots</div>
+      <div class="summary-pill"><span>${totalDays}</span> days scheduled</div>
+      <div class="summary-pill"><span>${filtered.length}</span> shown</div>
+    `;
+  }
+
+  // Init with sample data if empty
+  if (slots.length === 0) {
+    slots = [
+      { id: 1, subject: 'Mathematics', teacher: 'Mr. Rahman', start: '08:00', end: '09:00', room: 'Room 101', days: ['Sun','Tue','Thu'], color: '#c0392b' },
+      { id: 2, subject: 'English',     teacher: 'Ms. Akter',  start: '09:00', end: '10:00', room: 'Room 204', days: ['Mon','Wed'],       color: '#2471a3' },
+      { id: 3, subject: 'Physics',     teacher: 'Mr. Hossain',start: '10:15', end: '11:15', room: 'Lab 02',   days: ['Sun','Wed','Sat'], color: '#1e8449' },
+      { id: 4, subject: 'Break',       teacher: '',           start: '11:15', end: '11:30', room: 'Canteen',  days: ['Sun','Mon','Tue','Wed','Thu','Sat'], color: '#f39c12' },
+      { id: 5, subject: 'Chemistry',   teacher: 'Ms. Begum',  start: '11:30', end: '12:30', room: 'Lab 01',   days: ['Tue','Thu'],       color: '#8e44ad' },
+    ];
+    save();
+  }
+
+  render();
+</script>
+</body>
+</html>
