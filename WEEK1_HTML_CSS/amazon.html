@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shop Page</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family: Arial;
+    background:#f3f3f3;
+}
+
+/* Navbar */
+
+.navbar{
+    background:#131921;
+    color:white;
+    padding:15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.search-box input{
+    padding:8px;
+    width:300px;
+}
+
+.search-box button{
+    padding:8px;
+    background:#febd69;
+    border:none;
+}
+
+/* Banner */
+
+.banner{
+    background:#e3e6e6;
+    text-align:center;
+    padding:40px;
+}
+
+/* Products */
+
+.products{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    width:200px;
+    padding:15px;
+    text-align:center;
+    box-shadow:0 3px 8px rgba(0,0,0,0.1);
+}
+
+.card img{
+    width:100%;
+}
+
+.card button{
+    background:#ffd814;
+    border:none;
+    padding:8px;
+    margin-top:10px;
+}
+
+footer{
+    background:#131921;
+    color:white;
+    text-align:center;
+    padding:15px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+<div class="logo">MyShop</div>
+
+<div class="search-box">
+<input type="text" placeholder="Search products">
+<button>Search</button>
+</div>
+
+<div>Account | Cart</div>
+</div>
+
+<div class="banner">
+<h2>Welcome to My Online Store</h2>
+<p>Best Deals Available</p>
+</div>
+
+<div class="products">
+
+<div class="card">
+<img src="https://via.placeholder.com/200">
+<h3>Headphones</h3>
+<p>$25</p>
+<button>Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/200">
+<h3>Smart Watch</h3>
+<p>$50</p>
+<button>Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/200">
+<h3>Keyboard</h3>
+<p>$30</p>
+<button>Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/200">
+<h3>Mouse</h3>
+<p>$15</p>
+<button>Add to Cart</button>
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 MyShop</p>
+</footer>
+
+</body>
+</html>
