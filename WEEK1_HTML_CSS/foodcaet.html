@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Food Cart</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family: Arial;
+    background:#f8f8f8;
+}
+
+/* Navbar */
+
+.navbar{
+    background:#ff5733;
+    color:white;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+/* Food Section */
+
+.container{
+    padding:30px;
+}
+
+.food-grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.card{
+    background:white;
+    width:220px;
+    padding:15px;
+    text-align:center;
+    box-shadow:0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card img{
+    width:100%;
+    border-radius:10px;
+}
+
+.price{
+    color:#ff5733;
+    font-weight:bold;
+}
+
+button{
+    background:#ff5733;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    margin-top:10px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#e64a19;
+}
+
+/* Footer */
+
+footer{
+    background:#333;
+    color:white;
+    text-align:center;
+    padding:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="navbar">
+<div class="logo">FoodCart</div>
+<div>Menu | Cart | Login</div>
+</div>
+
+<div class="container">
+
+<h2 style="text-align:center;">Popular Foods</h2>
+
+<div class="food-grid">
+
+<div class="card">
+<img src="https://via.placeholder.com/200">
+<h3>Burger</h3>
+<p class="price">$5</p>
+<button>Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/200">
+<h3>Pizza</h3>
+<p class="price">$8</p>
+<button>Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/200">
+<h3>Fried Chicken</h3>
+<p class="price">$6</p>
+<button>Add to Cart</button>
+</div>
+
+<div class="card">
+<img src="https://via.placeholder.com/200">
+<h3>Sandwich</h3>
+<p class="price">$4</p>
+<button>Add to Cart</button>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 FoodCart</p>
+</footer>
+
+</body>
+</html>
